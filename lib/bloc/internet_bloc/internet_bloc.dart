@@ -11,10 +11,14 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
 
   InternetBloc() : super(InternetInitialState()) {
     on<InternetLostEvent>(
-      (event, emit) => InternetLostState(),
+      (event, emit) => emit(
+        InternetLostState(),
+      ),
     );
     on<InternetGainEvent>(
-      (event, emit) => InternetGainState(),
+      (event, emit) => emit(
+        InternetGainState(),
+      ),
     );
     connectivitySubscription =
         _connectivity.onConnectivityChanged.listen((result) {
